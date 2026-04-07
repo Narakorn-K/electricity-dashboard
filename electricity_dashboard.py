@@ -8,9 +8,9 @@ from datetime import datetime
 st.set_page_config(page_title="Electricity Usage Overview", layout="wide")
 
 # ─── Thai electricity tariff (PEA TOU rates, Baht/kWh) ───────────────────────
-ON_PEAK_RATE  = 4.1824   # Mon–Fri 09:00–22:00
-OFF_PEAK_RATE = 2.6369   # All other times
-FT_ADJ        = 0.3949   # Ft surcharge (per kWh)
+ON_PEAK_RATE  = 4.1839   # Mon–Fri 09:00–22:00
+OFF_PEAK_RATE = 2.6037   # All other times
+FT_ADJ        = 0.0972   # Ft surcharge (per kWh)
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────
 DAY_TH = {"อา": 6, "จ": 0, "อ": 1, "พ": 2, "พฤ": 3, "ศ": 4, "ส": 5}  # weekday (Mon=0)
@@ -127,9 +127,9 @@ with st.sidebar:
     st.markdown("## ⚡ Electricity Dashboard")
     uploaded = st.file_uploader("อัปโหลดไฟล์ Clean Data (.xlsx)", type=["xlsx"])
     st.markdown("---")
-    st.caption("อัตราค่าไฟ (PEA TOU)")
-    st.caption(f"• On Peak : {ON_PEAK_RATE + FT_ADJ:.4f} ฿/kWh")
-    st.caption(f"• Off Peak: {OFF_PEAK_RATE + FT_ADJ:.4f} ฿/kWh")
+    st.caption("อัตราค่าไฟ (MEA TOU)")
+    st.caption(f"• On Peak+FT : {ON_PEAK_RATE + FT_ADJ:.4f} ฿/kWh")
+    st.caption(f"• Off Peak+FT: {OFF_PEAK_RATE + FT_ADJ:.4f} ฿/kWh")
 
 if not uploaded:
     st.markdown('<div class="main-title">Electricity Usage Overview</div>', unsafe_allow_html=True)
